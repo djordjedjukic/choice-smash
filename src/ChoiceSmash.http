@@ -1,0 +1,6 @@
+@ChoiceSmash_HostAddress = http://localhost:5250
+
+GET {{ChoiceSmash_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

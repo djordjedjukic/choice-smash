@@ -1,0 +1,6 @@
+﻿services:
+  choicesmash:
+    image: choicesmash
+    build:
+      context: .
+      dockerfile: Dockerfile
