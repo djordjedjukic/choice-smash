@@ -1,6 +1,13 @@
-﻿services:
-  choicesmash:
-    image: choicesmash
+﻿version: '3.8'
+
+services:
+  myapp:
+    image: choicesmash-api:latest
     build:
-      context: .
+      context: .          
       dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: always          

@@ -1,23 +1,13 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 WORKDIR /src
 COPY ["src/ChoiceSmash.csproj", "./"]
-RUN dotnet restore "./ChoiceSmash.csproj"
+RUN dotnet restore "ChoiceSmash.csproj"
 COPY . .
-WORKDIR "/src/"
-RUN dotnet build "ChoiceSmash.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet publish "ChoiceSmash.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "ChoiceSmash.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app/publish .
+EXPOSE 8080
+
 ENTRYPOINT ["dotnet", "ChoiceSmash.dll"]
