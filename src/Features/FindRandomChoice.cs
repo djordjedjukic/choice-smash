@@ -11,17 +11,17 @@ public sealed class FindRandomChoices
 
     internal sealed class Handler : IRequestHandler<Query, ChoiceResponse>
     {
-        private readonly IRandomApi _randomApi;
+        private readonly RandomService _randomService;
 
-        public Handler(IRandomApi randomApi)
+        public Handler(RandomService randomService)
         {
-            _randomApi = randomApi;
+            _randomService = randomService;
         }
 
         public async Task<ChoiceResponse> Handle(Query request, CancellationToken cancellationToken)
         {
-            IRandomApi.RandomResponse result = await _randomApi.GetRandomNumber();
-            Choice randomChoice = Choice.FromValue(Utils.NormalizeToRange1To5(result.RandomNumber));
+            int randomNumber = await _randomService.GetRandomNumberAsync(cancellationToken);
+            Choice randomChoice = Choice.FromValue(Utils.NormalizeToRange1To5(randomNumber));
 
             return new ChoiceResponse(randomChoice.Value, randomChoice.Name);
         }
