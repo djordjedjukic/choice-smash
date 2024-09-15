@@ -1,4 +1,4 @@
-namespace ChoiceSmash.Infrastructure;
+namespace ChoiceSmash.Infrastructure.Exceptions;
 
 public class ValidationException : Exception
 {

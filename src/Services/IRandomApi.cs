@@ -6,7 +6,7 @@ namespace ChoiceSmash.Services;
 public interface IRandomApi
 {
     [Get("/random")]
-    Task<RandomResponse> GetRandomNumber(CancellationToken cancellationToken = default);
+    Task<RandomResponse> GetRandomNumberAsync(CancellationToken cancellationToken = default);
     
     public class RandomResponse
     {

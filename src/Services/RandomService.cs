@@ -25,7 +25,7 @@ public sealed class RandomService
         {
             return await _retryPolicy.ExecuteAsync(async () =>
             {
-                var response = await _randomApi.GetRandomNumber(cancellationToken);
+                var response = await _randomApi.GetRandomNumberAsync(cancellationToken);
                 return response.RandomNumber;
             });
         }

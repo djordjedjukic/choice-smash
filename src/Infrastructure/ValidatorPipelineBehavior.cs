@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using ValidationException = ChoiceSmash.Infrastructure.Exceptions.ValidationException;
 
 namespace ChoiceSmash.Infrastructure
 {
@@ -19,7 +20,7 @@ namespace ChoiceSmash.Infrastructure
         {
             if (!_validators.Any()) return next();
 
-            // Invoke the validators
+            // invoke the validators
             var failures = _validators
                 .Select(validator => validator.Validate(request))
                 .SelectMany(result => result.Errors)

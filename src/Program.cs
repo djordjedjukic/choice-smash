@@ -63,6 +63,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// added this so I can test it against codechallenge.boohma.com using Ngrok
 app.UseCors(options => options
     .AllowAnyOrigin()
     .AllowAnyHeader()

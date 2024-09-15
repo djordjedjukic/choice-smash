@@ -1,5 +1,4 @@
-﻿using System.Security.Authentication;
-using ChoiceSmash.Infrastructure.Exceptions;
+﻿using ChoiceSmash.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
@@ -59,24 +58,4 @@ public class GlobalExceptionHandler : IExceptionHandler
         await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
         return true;
     }
-
-    /*private static Dictionary<string, string[]> MapValidationErrors(ValidationException ex)
-    {
-        var errors = new Dictionary<string, string[]>();
-        foreach (var error in ex.Errors)
-        {
-            if (!errors.ContainsKey(error.Error))
-            {
-                errors[error.Error] = [error.Message];
-            }
-            else
-            {
-                var errorList = errors[error.Error].ToList();
-                errorList.Add(error.Message);
-                errors[error.Error] = errorList.ToArray();
-            }
-        }
-
-        return errors;
-    }*/
 }
