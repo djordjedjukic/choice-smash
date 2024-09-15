@@ -3,8 +3,17 @@ using ChoiceSmash.Services;
 using FluentValidation;
 using MediatR;
 using Refit;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// my preference is to use ravendb (or seq) as sink for logging, but it is overkill for this case
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .WriteTo.Console()
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 
@@ -35,6 +44,8 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
