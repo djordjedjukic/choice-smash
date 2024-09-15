@@ -10,16 +10,16 @@ public sealed class GetScoreboard
 
     internal sealed class Handler : IRequestHandler<Query, ScoreboardResponse>
     {
-        private readonly InMemoryScoreboard _inMemoryScoreboard;
+        private readonly IScoreboard _scoreboard;
 
-        public Handler(InMemoryScoreboard inMemoryScoreboard)
+        public Handler(IScoreboard scoreboard)
         {
-            _inMemoryScoreboard = inMemoryScoreboard;
+            _scoreboard = scoreboard;
         }
 
         public Task<ScoreboardResponse> Handle(Query request, CancellationToken cancellationToken)
         {
-            var result = _inMemoryScoreboard.GetRecentScoreboard();
+            var result = _scoreboard.GetRecentScoreboard();
 
             return Task.FromResult(result);
         }

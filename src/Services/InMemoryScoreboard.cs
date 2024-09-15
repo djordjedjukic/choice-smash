@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using ChoiceSmash.Enums;
 using ChoiceSmash.Models.Responses;
 
@@ -6,13 +7,13 @@ namespace ChoiceSmash.Services;
 public class InMemoryScoreboard : IScoreboard
 {
     private const int MaxResults = 10;
-    private readonly Queue<GameResult> _recentResults = new();
+    private ConcurrentQueue<GameResult> _recentResults = new();
 
     public void AddResult(GameResult result)
     {
         if (_recentResults.Count == MaxResults)
         {
-            _recentResults.Dequeue();
+            _recentResults.TryDequeue(out _);
         }
         _recentResults.Enqueue(result);
     }
@@ -29,6 +30,6 @@ public class InMemoryScoreboard : IScoreboard
 
     public void Reset()
     {
-        _recentResults.Clear();
+        Interlocked.Exchange(ref _recentResults, new ConcurrentQueue<GameResult>());
     }
 }
