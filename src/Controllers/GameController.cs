@@ -36,4 +36,18 @@ public class GameController : ControllerBase
         GameResult result = await _mediator.Send(new PlayGame.Command(request.Player));
         return Ok(result);
     }
+    
+    [HttpGet("scoreboard")]
+    public async Task<IActionResult> GetRecentScoreboard()
+    {
+        var result = await _mediator.Send(new GetScoreboard.Query());
+        return Ok(result);
+    }
+
+    [HttpPost("reset")]
+    public IActionResult ResetScoreboard()
+    {
+        _mediator.Send(new ResetScoreboard.Command());
+        return Ok();
+    }
 }
