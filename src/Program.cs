@@ -22,7 +22,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IScoreboard, InMemoryScoreboard>();
+builder.Services.AddSingleton<IScoreboardService, InMemoryScoreboardService>();
 builder.Services.AddTransient<RandomService>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));

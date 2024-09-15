@@ -5,7 +5,7 @@ using ChoiceSmash.Models.Responses;
 
 namespace ChoiceSmash.Services;
 
-public class InMemoryScoreboard : IScoreboard
+public class InMemoryScoreboardService : IScoreboardService
 {
     private const int MaxResults = 10;
     private ConcurrentQueue<GameResult> _recentResults = new();

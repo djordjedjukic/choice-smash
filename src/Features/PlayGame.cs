@@ -24,12 +24,12 @@ public sealed class PlayGame
     internal sealed class Handler : IRequestHandler<Command, GameResult>
     {
         private readonly RandomService _randomService;
-        private readonly IScoreboard _scoreboard;
+        private readonly IScoreboardService _scoreboardService;
 
-        public Handler(RandomService randomService, IScoreboard scoreboard)
+        public Handler(RandomService randomService, IScoreboardService scoreboardService)
         {
             _randomService = randomService;
-            _scoreboard = scoreboard;
+            _scoreboardService = scoreboardService;
         }
 
         public async Task<GameResult> Handle(Command request, CancellationToken cancellationToken)
@@ -38,7 +38,7 @@ public sealed class PlayGame
             int computerChoiceId = Utils.NormalizeToRange1To5(await _randomService.GetRandomNumberAsync(cancellationToken));
             
             var gameResult = GameService.DetermineWinner(Choice.FromValue(playerChoiceId), Choice.FromValue(computerChoiceId));
-            _scoreboard.AddResult(new GameResult(playerChoiceId, computerChoiceId, gameResult));
+            _scoreboardService.AddResult(new GameResult(playerChoiceId, computerChoiceId, gameResult));
             
             return new GameResult(playerChoiceId, computerChoiceId, gameResult);
         }
