@@ -1,0 +1,23 @@
+### get all choices
+GET {{host}}/choices
+Accept: application/json
+
+### get random choice
+GET {{host}}/choice
+Accept: application/json
+
+### play game
+POST {{host}}/play
+Content-Type: application/json
+
+{
+  "player": 1
+}
+
+### get scoreboard
+GET {{host}}/scoreboard
+Accept: application/json
+
+### reset scoreboard
+POST {{host}}/reset
+Content-Type: application/json
