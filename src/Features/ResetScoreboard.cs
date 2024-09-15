@@ -9,16 +9,16 @@ public sealed class ResetScoreboard
     
     internal sealed class Handler : IRequestHandler<Command, Unit>
     {
-        private readonly Scoreboard _scoreboard;
+        private readonly InMemoryScoreboard _inMemoryScoreboard;
 
-        public Handler(Scoreboard scoreboard)
+        public Handler(InMemoryScoreboard inMemoryScoreboard)
         {
-            _scoreboard = scoreboard;
+            _inMemoryScoreboard = inMemoryScoreboard;
         }
 
         public Task<Unit> Handle(Command request, CancellationToken cancellationToken)
         {
-            _scoreboard.Reset();
+            _inMemoryScoreboard.Reset();
             return Task.FromResult(Unit.Value);
         }
     }

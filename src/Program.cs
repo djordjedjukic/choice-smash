@@ -22,7 +22,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<Scoreboard>();
+builder.Services.AddSingleton<IScoreboard, InMemoryScoreboard>();
 builder.Services.AddTransient<RandomService>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
@@ -70,3 +70,6 @@ app.UseCors(options => options
     .AllowAnyMethod());
 
 app.Run();
+
+// workaround for visibility in integration tests
+public partial class Program { }

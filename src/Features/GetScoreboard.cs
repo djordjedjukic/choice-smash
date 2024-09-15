@@ -1,3 +1,4 @@
+using ChoiceSmash.Models.Responses;
 using ChoiceSmash.Services;
 using MediatR;
 
@@ -5,24 +6,22 @@ namespace ChoiceSmash.Features;
 
 public sealed class GetScoreboard
 {
-    public record Query : IRequest<Response>;
+    public record Query : IRequest<ScoreboardResponse>;
 
-    public record Response(int PlayerWins, int ComputerWins, int Ties);
-
-    internal sealed class Handler : IRequestHandler<Query, Response>
+    internal sealed class Handler : IRequestHandler<Query, ScoreboardResponse>
     {
-        private readonly Scoreboard _scoreboard;
+        private readonly InMemoryScoreboard _inMemoryScoreboard;
 
-        public Handler(Scoreboard scoreboard)
+        public Handler(InMemoryScoreboard inMemoryScoreboard)
         {
-            _scoreboard = scoreboard;
+            _inMemoryScoreboard = inMemoryScoreboard;
         }
 
-        public Task<Response> Handle(Query request, CancellationToken cancellationToken)
+        public Task<ScoreboardResponse> Handle(Query request, CancellationToken cancellationToken)
         {
-            var result = _scoreboard.GetRecentScoreboard();
+            var result = _inMemoryScoreboard.GetRecentScoreboard();
 
-            return Task.FromResult(new Response(result.PlayerWins, result.ComputerWins, result.Ties));
+            return Task.FromResult(result);
         }
     }
 }
