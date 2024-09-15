@@ -1,3 +1,5 @@
+using ChoiceSmash.Infrastructure;
+using ChoiceSmash.Infrastructure.Exceptions;
 using Polly;
 using Refit;
 
@@ -29,8 +31,7 @@ public sealed class RandomService
         }
         catch (ApiException apiEx)
         {
-            Console.WriteLine($"API error: {apiEx.StatusCode}");
-            throw;
+            throw new ExternalServiceException([new AppError("Api.NotAvailable",  apiEx.Message)]);
         }
     }
 }

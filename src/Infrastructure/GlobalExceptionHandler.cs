@@ -1,4 +1,5 @@
 ﻿using System.Security.Authentication;
+using ChoiceSmash.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,14 @@ public class GlobalExceptionHandler : IExceptionHandler
             case ValidationException ex:
                 problemDetails.Status = StatusCodes.Status400BadRequest;
                 problemDetails.Title = "One or more validation errors occurred.";
+                problemDetails.Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1";
+                problemDetails.Extensions["errors"] = ex.Errors;
+                
+                httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+                break;
+            case ExternalServiceException ex:
+                problemDetails.Status = StatusCodes.Status400BadRequest;
+                problemDetails.Title = "External service error.";
                 problemDetails.Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1";
                 problemDetails.Extensions["errors"] = ex.Errors;
                 
