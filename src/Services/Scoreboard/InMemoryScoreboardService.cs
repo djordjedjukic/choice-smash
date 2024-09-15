@@ -3,7 +3,7 @@ using ChoiceSmash.Domain;
 using ChoiceSmash.Enums;
 using ChoiceSmash.Models.Responses;
 
-namespace ChoiceSmash.Services;
+namespace ChoiceSmash.Services.Scoreboard;
 
 public class InMemoryScoreboardService : IScoreboardService
 {

@@ -1,5 +1,6 @@
 using ChoiceSmash.Enums;
 using ChoiceSmash.Services;
+using ChoiceSmash.Services.Game;
 
 namespace UnitTests;
 

@@ -1,7 +1,7 @@
 using ChoiceSmash.Domain;
 using ChoiceSmash.Models.Responses;
 
-namespace ChoiceSmash.Services;
+namespace ChoiceSmash.Services.Scoreboard;
 
 public interface IScoreboardService
 {

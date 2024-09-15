@@ -1,4 +1,5 @@
 ﻿using ChoiceSmash.Services;
+using ChoiceSmash.Services.Scoreboard;
 using MediatR;
 
 namespace ChoiceSmash.Features;

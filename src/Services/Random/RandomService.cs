@@ -3,7 +3,7 @@ using ChoiceSmash.Infrastructure.Exceptions;
 using Polly;
 using Refit;
 
-namespace ChoiceSmash.Services;
+namespace ChoiceSmash.Services.Random;
 
 public sealed class RandomService
 {

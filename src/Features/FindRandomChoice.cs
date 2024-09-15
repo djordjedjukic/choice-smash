@@ -1,6 +1,7 @@
 ﻿using ChoiceSmash.Enums;
 using ChoiceSmash.Models.Responses;
 using ChoiceSmash.Services;
+using ChoiceSmash.Services.Random;
 using MediatR;
 
 namespace ChoiceSmash.Features;

@@ -1,6 +1,6 @@
 using ChoiceSmash.Enums;
 
-namespace ChoiceSmash.Services;
+namespace ChoiceSmash.Services.Game;
 
 public static class GameService
 {
