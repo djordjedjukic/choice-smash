@@ -1,3 +1,4 @@
+using ChoiceSmash.Domain;
 using ChoiceSmash.Models.Requests;
 using ChoiceSmash.Models.Responses;
 

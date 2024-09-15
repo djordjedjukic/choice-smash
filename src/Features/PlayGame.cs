@@ -1,4 +1,5 @@
-﻿using ChoiceSmash.Enums;
+﻿using ChoiceSmash.Domain;
+using ChoiceSmash.Enums;
 using ChoiceSmash.Models.Responses;
 using ChoiceSmash.Services;
 using FluentValidation;
