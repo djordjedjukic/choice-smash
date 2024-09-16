@@ -1,7 +1,5 @@
 ﻿using ChoiceSmash.Domain;
 using ChoiceSmash.Enums;
-using ChoiceSmash.Models.Responses;
-using ChoiceSmash.Services;
 using ChoiceSmash.Services.Game;
 using ChoiceSmash.Services.Random;
 using ChoiceSmash.Services.Scoreboard;

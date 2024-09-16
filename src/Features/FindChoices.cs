@@ -10,14 +10,10 @@ public sealed class FindChoices
 
     internal sealed class Handler : IRequestHandler<Query, HashSet<ChoiceResponse>>
     {
-        public Handler()
-        {
-        }
-
         public Task<HashSet<ChoiceResponse>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(
-                new HashSet<ChoiceResponse>(Choice.List.Select(c => new ChoiceResponse(c.Value, c.Name))));
+            return Task.FromResult(new HashSet<ChoiceResponse>(Choice.List
+                .Select(c => new ChoiceResponse(c.Value, c.Name)).OrderBy(x => x.Id)));
         }
     }
 }
