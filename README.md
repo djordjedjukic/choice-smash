@@ -1,5 +1,6 @@
 # Choice smash
 ChoiceSmash is an implementation of the classic “Rock, Paper, Scissors, Lizard, Spock” game, designed for interview purposes.
+
 I did as much as possible in the time frame we agreed I would deliver this task.
 I had some doubts regarding implementation, whether I should use exceptions or results, using a real database or in memory persistence etc, but I made some decisions that we can discuss if necessary. 
 
