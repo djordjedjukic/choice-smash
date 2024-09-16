@@ -126,6 +126,7 @@ Content-Type: application/json
 {
   "player": 1,        
 }
+```
 
 #### Get scoreboard
 
