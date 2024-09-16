@@ -1,5 +1,9 @@
-# choice-smash
+# Choice smash
 ChoiceSmash is an implementation of the classic “Rock, Paper, Scissors, Lizard, Spock” game, designed for interview purposes.
+I did as much as possible in the time frame we agreed I would deliver this task.
+I had some doubts regarding implementation, whether I should use exceptions or results, using a real database or in memory persistence etc, but I made some decisions that we can discuss if necessary. 
+
+Anyway, I would appreciate any kind of feedback from your team so I can improve my skills.
 
 ## Features
 
@@ -108,3 +112,25 @@ To run integration tests, run the following commands
 | Key       | Type     | Description                            |
 | :-------- | :------- | :------------------------------------- |
 | `player`   | `int` | The ID of the player choice. |
+
+### Example
+
+```json
+POST /play
+Content-Type: application/json
+
+{
+  "player": 1,        
+}
+
+#### Get scoreboard
+
+```http
+  GET /scoreboard
+```
+
+#### Reset scoreboard
+
+```http
+  POST /reset
+```
