@@ -33,7 +33,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd choice-smash/src
+  cd src
 ```
 
 Start the server
@@ -45,7 +45,7 @@ Start the server
 Open API doc in browser
 
 ```bash
-  localhost:port//swagger
+  localhost:port/swagger
 ```
 
 ## Run with docker
@@ -56,17 +56,20 @@ Clone the project
   git clone https://github.com/djordjedjukic/choice-smash.git
 ```
 
-Go to the project directory
-
-```bash
-  cd choice-smash
-```
-
 Run docker compose
 
 ```bash
   docker compose up -d
 ```
+
+Open API doc in browser
+
+```bash
+  localhost:8080/swagger
+```
+
+> [!NOTE]  
+> You can modify `docker-compose.yml` file to modify port if needed.
 
 ## Running Unit Tests
 
